@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMagic - โลกแห่งภาพยนตร์</title>
+    <style>
+        /* CSS การจัดสไตล์เว็บไซต์ */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Sukhumvit Set', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* 1. ส่วนหัวเว็บไซต์ (Header) */
+        header {
+            background-color: #1f1f1f;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e50914;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #e50914;
+        }
+
+        /* 2. ส่วนเนื้อหา (Content) */
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #f5c518;
+            text-align: center;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        .content-section p {
+            margin-bottom: 1.2rem;
+            text-indent: 2em;
+            color: #dddddd;
+        }
+
+        .features-list {
+            background-color: #1f1f1f;
+            padding: 1.5rem 2.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #e50914;
+        }
+
+        .features-list h3 {
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        .features-list ul {
+            margin-left: 1.2rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.5rem;
+            color: #cccccc;
+        }
+
+        /* 3. ระบบแสดงความคิดเห็น (Comment Section) */
+        .comment-section {
+            background-color: #1f1f1f;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        .comment-section h2 {
+            margin-bottom: 1.5rem;
+            color: #f5c518;
+        }
+
+        .comment-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .comment-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-form input[type="text"],
+        .comment-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #2b2b2b;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .comment-form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .btn-submit {
+            background-color: #e50914;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #b80710;
+        }
+
+        .comments-display {
+            margin-top: 2rem;
+        }
+
+        .comment-item {
+            background-color: #2b2b2b;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            border-left: 3px solid #f5c518;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #f5c518;
+            margin-bottom: 0.3rem;
+        }
+
+        .comment-text {
+            color: #eeeeee;
+            word-wrap: break-word;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 4. ส่วนท้ายเว็บไซต์ (Footer) */
+        footer {
+            background-color: #0a0a0a;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1rem solid #1f1f1f;
+            color: #888888;
+        }
+
+        footer p {
+            margin: 0.3rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ส่วนหัวเว็บไซต์ (Header) -->
+    <header>
+        <div class="logo">CineMagic</div>
+        <nav>
+            <ul>
+                <li><a href="#about">เกี่ยวกับภาพยนตร์</a></li>
+                <li><a href="#gallery">ภาพบรรยากาศ</a></li>
+                <li><a href="#comments">ความคิดเห็น</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- 2. ส่วนเนื้อหา (Content) -->
+        <main>
+            <h1 id="about" class="hero-title">เสน่ห์แห่งโลกมนต์ข่ายภาพยนตร์</h1>
+
+            <!-- รูปภาพอย่างน้อย 3 รูป -->
+            <div id="gallery" class="gallery">
+                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80" alt="โรงภาพยนตร์">
+                <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80" alt="การฉายภาพยนตร์">
+                <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=600&q=80" alt="ป๊อปคอร์นและตั๋วหนัง">
+            </div>
+
+            <!-- ข้อมูลอย่างน้อย 3 ย่อหน้า -->
+            <div class="content-section">
+                <p>
+                    ภาพยนตร์ไม่ได้เป็นเพียงแค่ความบันเทิงในยามว่างเท่านั้น แต่ยังเป็นศาสตร์และศิลป์ที่สะท้อนถึงวิถีชีวิต วัฒนธรรม และความคิดของผู้คนในแต่ละยุคสมัย ผ่านการเล่าเรื่องด้วยภาพ เสียง และอารมณ์ความรู้สึกที่ถูกถ่ายทอดออกมาอย่างประณีต การรับชมภาพยนตร์ทำให้ผู้ฟังสามารถก้าวข้ามขีดจำกัดของจินตนาการและสัมผัสประสบการณ์ใหม่ๆ ที่อาจไม่เคยพบเจอในชีวิตจริง
+                </p>
+                <p>
+                    วิวัฒนาการของภาพยนตร์มีการเติบโตอย่างต่อเนื่อง จากยุคภาพยนตร์ขาวดำที่ไร้เสียง มาสู่ยุคปัจจุบันที่มีเทคโนโลยีการถ่ายทำอันทันสมัย ไม่ว่าจะเป็นระบบภาพ 4K, เอฟเฟกต์พิเศษ (CGI) หรือระบบเสียงรอบทิศทาง ซึ่งช่วยเพิ่มความสมจริงและดึงดูดให้ผู้ชมรู้สึกเหมือนได้เข้าไปเป็นส่วนหนึ่งของเรื่องราวเหล่านั้นจริงๆ
+                </p>
+                <p>
+                    นอกจากนี้ ภาพยนตร์ยังเป็นสื่อกลางที่ช่วยเชื่อมโยงผู้คนจากต่างวัฒนธรรมเข้าด้วยกัน ช่วยเปิดมุมมองความคิดใหม่ๆ และบางครั้งก็สร้างแรงบันดาลใจที่ยิ่งใหญ่ให้กับชีวิต ดังนั้น ภาพยนตร์จึงเป็นมากกว่าสิ่งบันเทิง แต่เป็นศิลปะที่ทรงพลังและมีอิทธิพลต่อมนุษย์เราอย่างมหาศาล
+                </p>
+            </div>
+
+            <!-- รายการแบบ Bullet อย่างน้อย 1 รายการ -->
+            <div class="features-list">
+                <h3>องค์ประกอบหลักที่ทำให้ภาพยนตร์น่าสนใจ</h3>
+                <ul>
+                    <li>บทภาพยนตร์และการเล่าเรื่องที่ชวนติดตาม (Screenplay & Storytelling)</li>
+                    <li>การแสดงของนักแสดงที่ถ่ายทอดอารมณ์ได้อย่างสมจริง (Acting)</li>
+                    <li>งานภาพและเทคนิคพิเศษด้านสายตา (Cinematography & Visual Effects)</li>
+                    <li>ดนตรีประกอบและเสียงเอฟเฟกต์ที่สร้างบรรยากาศ (Soundtrack & Sound Design)</li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- 3. ระบบแสดงความคิดเห็น (Comment Section) -->
+        <section id="comments" class="comment-section">
+            <h2>แสดงความคิดเห็น</h2>
+            <form id="commentForm" class="comment-form">
+                <div class="form-group">
+                    <label for="authorName">ชื่อของคุณ:</label>
+                    <input type="text" id="authorName" placeholder="กรอกชื่อของคุณที่นี่..." required>
+                </div>
+                <div class="form-group">
+                    <label for="commentContent">ความคิดเห็น:</label>
+                    <textarea id="commentContent" placeholder="เขียนความคิดเห็นเกี่ยวกับภาพยนตร์..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">ส่งความคิดเห็น</button>
+            </form>
+
+            <div class="comments-display" id="commentsDisplay">
+                <!-- ความคิดเห็นจะมาปรากฏตรงนี้ -->
+            </div>
+        </section>
+    </div>
+
+    <!-- 4. ส่วนท้ายเว็บไซต์ (Footer) -->
+    <footer>
+        <p><strong>ผู้จัดทำ:</strong> เด็กหญิง จิรชยา แสนสัจจะ</p>
+        <p><strong>ชั้นเรียน:</strong> มัธยมศึกษาปีที่ 3/2</p>
+        <p><strong>ปีการศึกษา:</strong> 2569</p>
+    </footer>
+
+    <!-- JavaScript สำหรับระบบความคิดเห็น -->
+    <script>
+        const commentForm = document.getElementById('commentForm');
+        const commentsDisplay = document.getElementById('commentsDisplay');
+
+        commentForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // ป้องกันไม่ให้หน้าเว็บรีเฟรช
+
+            // ดึงค่าจากฟอร์ม
+            const nameInput = document.getElementById('authorName').value;
+            const contentInput = document.getElementById('commentContent').value;
+
+            // สร้าง Element สำหรับความคิดเห็นใหม่
+            const newComment = document.createElement('div');
+            newComment.className = 'comment-item';
+
+            const authorDiv = document.createElement('div');
+            authorDiv.className = 'comment-author';
+            authorDiv.textContent = nameInput;
+
+            const textDiv = document.createElement('div');
+            textDiv.className = 'comment-text';
+            textDiv.textContent = contentInput;
+
+            newComment.appendChild(authorDiv);
+            newComment.appendChild(textDiv);
+
+            // แสดงความคิดเห็นล่าสุดไว้ด้านบนสุด (prepend)
+            commentsDisplay.prepend(newComment);
+
+            // ล้างข้อมูลในช่องกรอก
+            commentForm.reset();
+        });
+    </script>
+</body>
+</html>
